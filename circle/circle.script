@@ -71,18 +71,19 @@ fun DisplayPasswordCallback(nil, bulletCount) {
     state.status = "pause";
     totalWidth = bulletCount * bullet.image.GetWidth();
     startPos = screen.half.w - totalWidth / 2;
+    password_y = screen.half.h + flyingman_image[0].GetHeight() / 2 + 40;
 
     prompt.image = Image.Text("Enter Password", 1, 1, 1);
     prompt.sprite = Sprite(prompt.image);
     prompt.sprite.SetX(screen.half.w - prompt.image.GetWidth() / 2);
-    prompt.sprite.SetY(screen.h - 4 * prompt.image.GetHeight());
+    prompt.sprite.SetY(password_y);
 
     // Clear all bullets (user might hit backspace)
     bullets = null;
     for (i = 0; i < bulletCount; i++) {
         bullets[i].sprite = Sprite(bullet.image);
         bullets[i].sprite.SetX(startPos + i * bullet.image.GetWidth());
-        bullets[i].sprite.SetY(screen.h - 2 * bullet.image.GetHeight());
+        bullets[i].sprite.SetY(password_y + prompt.image.GetHeight() + 10);
     }
 }
 Plymouth.SetDisplayPasswordFunction(DisplayPasswordCallback);
@@ -106,3 +107,20 @@ fun MessageCallback(text) {
 }
 Plymouth.SetMessageFunction(MessageCallback);
 
+//----------------------------------------- Set Logos --------------------------------
+
+eos_image  = Image("eos-white-opaque.png");
+eos_sprite = Sprite(eos_image);
+
+eos_sprite.SetPosition(
+    screen.half.w - eos_image.GetWidth() / 2,
+    screen.h - eos_image.GetHeight() - 30
+);
+
+// add avatar to top left
+top_margin  = 24;
+left_margin = 24;
+avatar_image  = Image("avatar-192.png");
+avatar_sprite = Sprite(avatar_image);
+avatar_sprite.SetPosition(left_margin, top_margin);
+avatar_sprite.SetOpacity(1.0);
