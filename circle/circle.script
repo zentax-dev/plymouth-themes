@@ -109,12 +109,12 @@ Plymouth.SetMessageFunction(MessageCallback);
 
 //----------------------------------------- Set Logos --------------------------------
 
-eos_image  = Image("eos-white-opaque.png");
-eos_sprite = Sprite(eos_image);
+distro_logo  = Image("archlinux-logo-light.png");
+distro_sprite = Sprite(distro_logo);
 
-eos_sprite.SetPosition(
-    screen.half.w - eos_image.GetWidth() / 2,
-    screen.h - eos_image.GetHeight() - 30
+distro_sprite.SetPosition(
+    screen.half.w - distro_logo.GetWidth() / 2,
+    screen.h - distro_logo.GetHeight() - 30
 );
 
 // add avatar to top left
